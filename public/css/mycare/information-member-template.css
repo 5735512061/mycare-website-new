@@ -1,0 +1,87 @@
+.text-danger strong {
+    color: #9f181c;
+}
+
+.panel-center{
+    text-align: center;
+}
+
+.text-car {
+    color: #FFFFFF !important;  
+    font-weight: bold;
+}
+
+.carnumber {
+    background: linear-gradient(to bottom,rgba(43,50,130,1) 0,rgba(0,179,255,1) 100%) !important;
+    border-color: #2b3282 !important;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,.2),0 6px 20px 0 rgba(0,0,0,.19)!important;
+}
+
+.carnumber:hover {
+    background: linear-gradient(to bottom,rgba(0,8,105,1) 0,rgba(7,151,212,1) 100%) !important;
+}
+
+.receipt-main {
+    background: #ffffff none repeat scroll 0 0;
+    border-bottom: 12px solid #333333;
+    border-top: 12px solid #2b3282;
+    margin-bottom: 10px;
+    position: relative;
+    box-shadow: 0 1px 21px #acacac;
+    color: #333333;
+    font-family: 'Prompt', open sans;
+}
+.receipt-main p {
+    color: #333333;
+    font-family: 'Prompt', open sans;
+    line-height: 1.42857;
+}
+.receipt-main::after {
+    background: #414143 none repeat scroll 0 0;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: -13px;
+}
+.receipt-main thead {
+    background: #FFF none repeat scroll 0 0;
+}
+.receipt-main thead th {
+    color:#fff;
+    font-size: 17.4px;
+}
+.receipt-right h5 {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.receipt-right p i {
+    text-align: center;
+    width: 18px;
+}
+.receipt-main td p{
+    font-size: 16px;
+    font-weight: initial !important;
+}  
+.receipt-main td h2 {
+    font-size: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.receipt-header-mid .receipt-left h1 {
+    font-weight: 100;
+    margin: 34px 0 0;
+    text-align: right;
+    text-transform: uppercase;
+}
+.receipt-header-mid {
+    margin: 24px 0;
+    overflow: hidden;
+}
+
+#container {
+    background-color: #dcdcdc;
+}
+

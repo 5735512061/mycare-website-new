@@ -1,0 +1,134 @@
+a {
+    color: currentColor;
+    text-decoration: none;
+  }
+  
+  p {
+    font-size: 18px;
+    font-family: 'Prompt' !important;
+    font-weight: 300;
+  }
+  
+  a:hover .card-outmore {
+    background: blue;
+    color: #fff !important;
+  }
+  
+  a:hover h5 {
+    color: #fff !important;
+  }
+  
+  a:hover .thecard {
+    box-shadow: 0 10px 20px rgba(0,0,0,.6);
+  }
+  
+  .thecard {
+    width: 100%;
+    margin: 5% auto;
+    box-shadow: 0 1px 30px rgba(0,0,0,.4);
+    display: block;
+    background-color: #fff;
+    border-radius: 4px;
+    transition: 400ms ease;
+    margin-bottom: 25px !important;
+  }
+  
+  .card-img {
+    height: 225px;
+  }
+  
+  .card-img img {
+    width:100%;
+    border-radius: 4px 4px 0px 0px;
+  }
+  
+  .card-caption {
+    position: relative;
+    background: #ffffff;
+    padding: 36px 17px 15px 17px;
+    border-radius: 0px 0px 4px 4px;
+  }
+  
+  .card-outmore {
+    padding: 10px 25px 10px 25px;
+    border-radius: 0px 0px 4px 4px;
+    border-top: 1px solid #e0e0e0;
+    background: #efefef;
+    color: #222;
+    display: inline-table;
+    width: 100%;
+    box-sizing: border-box;
+    transition: 400ms ease;
+  }
+  
+  .card-outmore h5 {
+    float: left;
+  }
+  
+  .card-outmore h5:hover {
+    float: left;
+    color: #fff !important;
+  }
+  
+  .card-outmore i {
+    float: right;
+  }
+  
+  span.date {
+    font-size: 10px;
+  }
+  
+  h1 {
+    font-size: 22px;
+    color: #092895 !important;
+  }
+  
+  h5 {
+    margin:0;
+    font-family: 'Prompt' !important;
+    font-weight: 200 !important;
+  }
+  
+  h5:hover {
+    margin:0;
+    font-family: 'Prompt' !important;
+    font-weight: 200 !important;
+    color: #fff;
+  }
+  
+  h4 {
+      font-family: 'Prompt' !important;
+      font-weight: 200 !important;
+      color: #252525;
+  }
+  
+  #like-btn {
+    font-size: 40px;
+    background: #fff;
+    color: #204be3;
+    padding: 0px 2px 0px 2px;
+    border-radius: 50em;
+    position: absolute;
+    right: 10px;
+    top: -40px;
+    box-shadow: 0 2px 1px rgba(0,0,0,.2);
+    transition: 400ms ease;
+  }
+  
+  #like-btn:hover {
+    font-size: 40px;
+    background: #fff;
+    color: #204be3;
+    padding: 0px 2px 0px 2px;
+    border-radius: 50em;
+    position: absolute;
+    right: 10px;
+    top: -40px;
+    box-shadow: 0 4px 5px rgba(0,0,0,.3);
+  }
+  
+  #outmore-icon {
+    border:1px solid ;
+    padding: 1px 6px;
+    border-radius: 50em;
+  }

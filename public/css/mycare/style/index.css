@@ -1,0 +1,60 @@
+@media (max-width: 991px) {
+    .home-banner-area .fullscreen {
+      height: 150px !important;
+   }
+  }
+  
+  @font-face {
+    font-family: 'Nucleo Outline';
+    src: url("https://github.com/creativetimofficial/now-ui-kit/blob/master/assets/fonts/nucleo-outline.eot");
+    src: url("https://github.com/creativetimofficial/now-ui-kit/blob/master/assets/fonts/nucleo-outline.eot") format("embedded-opentype");
+    src: url("https://raw.githack.com/creativetimofficial/now-ui-kit/master/assets/fonts/nucleo-outline.woff2");
+    font-weight: normal;
+    font-style: normal;
+  
+  }
+
+@font-face {
+    font-family: 'Azonix';
+    src: url('fonts/Azonix.ttf') format('truetype');
+    font-style: normal;
+    font-weight: normal;
+}
+
+.azonix {
+    font-family: 'Azonix' !important;
+    src: url('fonts/Azonix.ttf') format('truetype');
+}
+  
+  .now-ui-icons {
+      display: inline-block;
+      font: normal normal normal 14px/1 'Nucleo Outline';
+      font-size: inherit;
+      speak-as: none;
+      text-transform: none;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .now-ui-icons.arrows-1_minimal-left:before {
+      content: "\ea3a";
+  }
+  
+  .now-ui-icons.arrows-1_minimal-right:before {
+      content: "\ea3b";
+  }
+  
+  img {
+      max-width: 100%;
+      border-radius: 1px;
+  }
+  
+  .carousel-item.active {
+      display: block;
+  }
+  
+  .carousel .carousel-inner {
+      box-shadow: 0px 10px 25px 0px rgba(0, 0, 0, 0.3);
+      border-radius: 0.1875rem;
+  }
+  
