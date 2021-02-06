@@ -40,6 +40,14 @@
                 <h3 style="font-weight: normal !important;">ข้อมูลผู้สมัครสมาชิก <i class="fa fa-caret-down" style="color:#777777;"></i></h3><br>
                 <div class="row">
                     <div class="mt-12 col-md-12">
+                        @if ($errors->has('serialnumber'))
+                            <span class="text-danger" style="font-size: 17px;">({{ $errors->first('serialnumber') }})</span>
+                        @endif
+                        <input type="text" name="serialnumber" class="single-input" value="{{$member->serialnumber}}">
+                    </div>
+                </div><br>
+                <div class="row">
+                    <div class="mt-12 col-md-12">
                         @if ($errors->has('card_id'))
                             <span class="text-danger" style="font-size: 17px;">({{ $errors->first('card_id') }})</span>
                         @endif
