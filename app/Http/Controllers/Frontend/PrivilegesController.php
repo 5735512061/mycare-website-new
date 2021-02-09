@@ -14,7 +14,7 @@ class PrivilegesController extends Controller
     }
 
     public function reward_points() {
-        $rewards = Reward::get();
+        $rewards = Reward::where('reward_type',"!=",NULL)->get();
         return view('/frontend/privilege/reward-points')->with('rewards',$rewards);
     }
 
