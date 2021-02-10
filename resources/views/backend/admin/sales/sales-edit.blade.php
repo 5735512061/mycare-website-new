@@ -43,7 +43,7 @@
                         @if ($errors->has('serialnumber'))
                             <span class="text-danger" style="font-size: 17px;">({{ $errors->first('serialnumber') }})</span>
                         @endif
-                        <input type="text" name="serialnumber" class="single-input" value="{{$member->serialnumber}}">
+                        <input type="text" id="ssn" maxlength="19" minlength="19" name="serialnumber" class="single-input" value="{{$member->serialnumber}}">
                     </div>
                 </div><br>
                 <div class="row">
@@ -303,5 +303,18 @@
     }
 
 }
+</script>
+<script>
+    // serial number
+    $('#ssn').keyup(function() {
+        var val = this.value.replace(/\D/g, '');
+        var newVal = '';
+        while (val.length > 4) {
+          newVal += val.substr(0, 4) + '-';
+          val = val.substr(4);
+        }
+        newVal += val;
+        this.value = newVal;
+    });
 </script>
 @endsection
