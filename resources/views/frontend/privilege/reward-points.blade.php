@@ -70,7 +70,7 @@
           <div class="card-body">
             <!--Title-->
             <center><h4 class="card-title">{{$value->reward_name}}</h4></center>
-            <center><h3 class="card-title" style="color:#34488d; font-size:22px; font-weight:normal;">ใช้คะแนน {{$value->point}} Point</h3></center>
+            <center><h3 class="card-title" style="color:#34488d; font-size:18px; font-weight:normal;">ใช้คะแนน {{$value->point}} Point</h3></center>
             <!--Text-->
             <center><img src="{{url('/images/reward')}}/{{$value->image}}" class="img-responsive" width="80%"></center>
             <center><a href="{{url('privilege/reward-detail/')}}/{{$value->id}}" class="genric-btn blue radius btn_sub" style="text-align: right;">รายละเอียด</a></center>
