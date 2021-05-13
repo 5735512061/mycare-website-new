@@ -71,7 +71,7 @@ class StoresController extends Controller
     }
 
     public function privilege_receive(Request $request) {
-        $serialnumber = $request->serialnumber;
+        $serialnumber = $request->serialnumber;    
         $store_name = $request->store_name;
         $store = Store::where('store_name',$store_name)->first(); 	
     

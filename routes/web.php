@@ -241,7 +241,7 @@ Route::group(['prefix' => '/privilege'], function(){
     Route::get('/{store_name}','Frontend\\StoresController@index');
     Route::post('/store/receive','Frontend\\StoresController@privilege_receive');           
     
-    Route::get('/expire/{store_name}','Frontend\\ExpireStoresController@expire');
+    Route::get('/expire-mycare-member/{store_name}','Frontend\\ExpireStoresController@expire');
     Route::post('/expire/store/receive','Frontend\\ExpireStoresController@privilege_receive');
 
 });

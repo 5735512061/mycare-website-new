@@ -15,6 +15,7 @@
 							<li><a href="{{url('admin/member-register')}}">สมัครผ่านเว็บไซต์</a></li>
 							<li><a href="{{url('admin/staff')}}">ข้อมูลพนักงาน</a></li>
 							<li><a href="{{url('admin/sales')}}">ข้อมูลสมาชิกเซลล์</a></li>
+							<li><a href="{{url('privilege/expire-mycare-member/MycareExpire')}}"><i class="fa fa-address-card-o"></i></a></li>
 						</ul>
 					</li>
 					<li class="menu-has-children">
