@@ -128,7 +128,7 @@
                         <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="4%">ทางบริษัทฯ จะติดต่อกลับเพื่อให้ท่านยืนยันการรับสิทธิ์<br>
                         <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="4%">กรณีทำการแลกพอยท์แล้ว จะไม่สามารถยกเลิกได้ทุกกรณี<br><br>
                     </div>
-					<a href="{{url('/member/reward-redem')}}/{{$reward->id}}"><button class="genric-btn blue radius btn_sub" style="width: 70%;">กดแลกคะแนนสะสม</button></a>
+					{{-- <a href="{{url('/member/reward-redem')}}/{{$reward->id}}"><button class="genric-btn blue radius btn_sub" style="width: 70%;">กดแลกคะแนนสะสม</button></a> --}}
                 </div>
             </div>
 		</div>
@@ -149,7 +149,7 @@
                         <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="7%">ทางบริษัทฯ จะติดต่อกลับเพื่อให้ท่านยืนยันการรับสิทธิ์<br>
                         <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="7%">กรณีทำการแลกพอยท์แล้ว จะไม่สามารถยกเลิกได้ทุกกรณี<br><br>
                     </div>
-			<center><a href="{{url('member/reward-redem/')}}/{{$reward->id}}" class="genric-btn blue radius btn_sub" style="text-align: right;">กดแลกคะแนนสะสม</a></center>
+			{{-- <center><a href="{{url('member/reward-redem/')}}/{{$reward->id}}" class="genric-btn blue radius btn_sub" style="text-align: right;">กดแลกคะแนนสะสม</a></center> --}}
 		  </div>
 		</div>
 	</div>
