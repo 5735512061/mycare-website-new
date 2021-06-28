@@ -237,6 +237,16 @@ class MembersController extends Controller
         }
         
     }
+
+    public function rewardHistory(Request $request, $id) {
+        $NUM_PAGE = 20;
+        $reward_exchanges = Historyreward::where('member_id',$id)->paginate($NUM_PAGE);
+        $page = $request->input('page');
+        $page = ($page != null)?$page:1;
+        return view('frontend/member/account/reward-history')->with('reward_exchanges',$reward_exchanges)
+                                                             ->with('NUM_PAGE',$NUM_PAGE)
+                                                             ->with('page',$page);
+    }
     
     public function rules() {
         return [

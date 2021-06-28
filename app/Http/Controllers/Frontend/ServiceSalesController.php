@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Salesmember;
 use App\Salesservice;
 use App\Salescar;
+use App\Historyreward;
 
 class ServiceSalesController extends Controller
 {
@@ -58,5 +59,15 @@ class ServiceSalesController extends Controller
                                                                 ->with('services',$services)
                                                                 ->with('service_date',$service_date)
                                                                 ->with('service_branch',$service_branch);
+    }
+
+    public function rewardHistory(Request $request, $id) {
+        $NUM_PAGE = 20;
+        $reward_exchanges = Historyreward::where('sales_id',$id)->paginate($NUM_PAGE);
+        $page = $request->input('page');
+        $page = ($page != null)?$page:1;
+        return view('frontend/member/account-sales/reward-history')->with('reward_exchanges',$reward_exchanges)
+                                                                   ->with('NUM_PAGE',$NUM_PAGE)
+                                                                   ->with('page',$page);
     }
 }

@@ -105,7 +105,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-8"></div>
-        <div class="col-md-4 col-12" style="text-align: right;">
+        <div class="col-md-4 col-12" style="text-align: right; margin-top:50px;">
                 <h4 style="color: #2b3282;" class="large-6 column">
                     คะแนนสะสม
                 </h4>

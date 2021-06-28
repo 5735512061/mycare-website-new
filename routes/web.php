@@ -76,6 +76,8 @@ Route::group(['middleware' => ['auth']], function () {
         Route::get('/summary-statistic/{id}','Backend\\AdminsController@summary_statisticID');
 		Route::get('/statistic/{store_name}/{year}/{month}','Backend\\AdminsController@SummarystatisticMonth');
         Route::get('reward/exchange','Backend\\AdminsController@exchange');
+        Route::get('/reward/exchange/update/{id}','Backend\\AdminsController@reward_exchange_update');
+        Route::get('/exchange-delete/{id}','Backend\\AdminsController@exchange_delete');
         Route::get('/reward-edit/{id}','Backend\\AdminsController@reward_edit');
         Route::post('/reward-update','Backend\\AdminsController@reward_update'); 
         Route::get('/reward-delete/{id}','Backend\\AdminsController@reward_delete');
@@ -177,6 +179,7 @@ Route::group(['prefix' => 'member'], function(){
     Route::post('/profile-update','Frontend\\MembersController@profileUpdate');
     Route::get('/tel-change','Frontend\\MembersController@telChange');
     Route::post('/tel-update','Frontend\\MembersController@telUpdate');
+    Route::get('/reward-history/{id}','Frontend\\MembersController@rewardHistory');
 
     Route::get('/reward-redem/{id}','Frontend\\RewardsController@reward_redem');
     Route::post('/reward-success','Frontend\\RewardsController@reward_success');
@@ -190,7 +193,10 @@ Route::group(['prefix' => 'member'], function(){
     Route::get('/sales/service/car-list/{id}','Frontend\\ServiceSalesController@serviceCarList');
     Route::get('/sales/service-history/{id}','Frontend\\ServiceSalesController@serviceHistory');
     Route::get('/sales/service-information/{id}','Frontend\\ServiceSalesController@serviceInformation');
-    
+
+    // Reward
+    Route::get('/sales/reward-history/{id}','Frontend\\ServiceSalesController@rewardHistory');
+
 });
 
 
@@ -228,7 +234,7 @@ Route::group(['prefix' => '/alliance'], function(){
 Route::group(['prefix' => '/privilege'], function(){
 	
     Route::get('/point','Frontend\\PrivilegesController@point');
-    Route::get('/reward-points','Frontend\\PrivilegesController@reward_points');                                                      
+    Route::get('/reward-points','Frontend\\PrivilegesController@reward_points')->middleware('guest:memberandsale');                                                                 
     Route::get('/reward-detail/{id}','Frontend\\PrivilegesController@reward_detail'); 
 
     Route::get('/reward-food','Frontend\\PrivilegesController@rewardFood');      

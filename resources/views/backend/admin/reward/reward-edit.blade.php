@@ -86,6 +86,13 @@
                             </div>
                         </div>
                     </div>
+                    <div class="mt-10 col-md-6">
+                        <select name="user_type" class="form-control single-input">
+                            <option value="{{$reward->user_type}}">{{$reward->user_type}}</option>
+                            <option value="สมาชิกทั่วไป">สมาชิกทั่วไป</option>
+                            <option value="เซลล์">เซลล์</option>
+                        </select>
+                    </div>
                 </div><br>
                 <h2>รายละเอียด <i class="fa fa-caret-down" style="color:#777777;"></i></h2><br>
                 <textarea name="detail" class="single-textarea" value="{{$reward->detail}}" required>{{$reward->detail}}</textarea>

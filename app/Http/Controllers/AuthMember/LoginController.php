@@ -47,7 +47,6 @@ class LoginController extends Controller
 
         if(count($member) == 0) {
             $member = Salesmember::where('tel',$tel)->get();
-            // dd($member);
             $this->validate($request, [
               'tel' => 'required|exists:sales_members',
             ],[
@@ -58,12 +57,9 @@ class LoginController extends Controller
             $credential = [
               'tel' => $request->tel,
               'password' => $request->password,
-              // 'status' => $status,
             ];
 
             if(Auth::guard('sales_members')->attempt($credential, $request->member)){
-              // dd(Redirect::intended());
-              // dd(Session::get('backUrl'));
               return Session::get('backUrl') ? redirect( Session::get('backUrl') ) : redirect()->intended(route('member.home'));
             }
             $request->session()->flash('alert-danger', 'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง');
@@ -83,11 +79,9 @@ class LoginController extends Controller
             $credential = [
               'tel' => $request->tel,
               'password' => $request->password,
-              // 'status' => $status,
             ];
   
             if(Auth::guard('member')->attempt($credential, $request->member)){
-              // dd(Session::get('backUrl'));
               return Session::get('backUrl') ? redirect( Session::get('backUrl') ) : redirect()->intended(route('member.home'));
             } 
             $request->session()->flash('alert-danger', 'หมายเลขโทรศัพท์หรือรหัสผ่านไม่ถูกต้อง');

@@ -38,6 +38,7 @@
                         <thead>
                             <tr>
                                 <th style="color: #000; text-align:center;">ลำดับ</th>
+                                <th style="color: #000; text-align:center;">ประเภท</th>
                                 <th style="color: #000; text-align:center;">ของรางวัล</th>
                                 <th style="color: #000; text-align:center;">รายละเอียด</th>
                                 <th style="color: #000; text-align:center;">พอยท์</th>
@@ -49,6 +50,7 @@
                         <tbody id="myTable" class="table">
                             <tr>
                                 <td style="color: #000; text-align:center;">{{$NUM_PAGE*($page-1) + $reward+1}}</td>
+                                <td style="color: #000; text-align:center;">{{$value->user_type}}</td>
                                 <td style="color: #000; text-align:center;">{{$value->reward_name}}</td>
                                 <td style="color: #000; text-align:center;">{{$value->detail}}</td>
                                 <td style="color: #000; text-align:center;">{{$value->point}}</td>

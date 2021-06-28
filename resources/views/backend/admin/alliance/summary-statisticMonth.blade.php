@@ -33,16 +33,28 @@
                             <td>{{$NUM_PAGE*($page-1) + $statistic+1}}</td>
                             <td>
                                 <?php 
-                                    echo (DB::table('members')->where('id',$value->member_id)->value('serialnumber'));
+                                    if(DB::table('members')->where('id',$value->member_id)->value('serialnumber') != NULL) {
+                                        echo (DB::table('members')->where('id',$value->member_id)->value('serialnumber'));
+                                    } else {
+                                        echo (DB::table('sales_members')->where('id',$value->sales_id)->value('serialnumber'));
+                                    }
                                 ?>
                             </td>
                             <td>
                                 <?php 
-                                    echo (DB::table('members')->where('id',$value->member_id)->value('name'));
+                                    if(DB::table('members')->where('id',$value->member_id)->value('name') != NULL) {
+                                        echo (DB::table('members')->where('id',$value->member_id)->value('name'));
+                                    } else {
+                                        echo (DB::table('sales_members')->where('id',$value->sales_id)->value('name'));
+                                    }
                                 ?> 
                                 <?php 
-                                    echo (DB::table('members')->where('id',$value->member_id)->value('surname'));
-                                ?> 
+                                    if(DB::table('members')->where('id',$value->member_id)->value('surname') != NULL) {
+                                        echo (DB::table('members')->where('id',$value->member_id)->value('surname'));
+                                    } else {
+                                        echo (DB::table('sales_members')->where('id',$value->sales_id)->value('surname'));
+                                    }
+                                ?>
                             </td>
                             <td>{{$value->date}}</td>
                             <td>{{$value->code}}</td>

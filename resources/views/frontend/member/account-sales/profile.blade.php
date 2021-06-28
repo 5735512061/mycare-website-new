@@ -291,19 +291,21 @@
                         <a href="{{ url('member/sales/service/car-list') }}/{{$member->id}}"><button style="width:100%;" class="genric-btn blue radius">ประวัติการใช้บริการ</button></a>
                     </div>
                     <div class="col-md-6">
-                        <a href="{{ route('password.change') }}"><button style="width:100%;" class="genric-btn blue radius">เปลี่ยนรหัสผ่าน</button></a>
+                        <a href="{{ url('member/sales/reward-history') }}/{{$member->id}}"><button style="width:100%;" class="genric-btn blue radius">ประวัติการแลกคะแนน</button></a>
                     </div>
                 </div>
                 <div class="row">
+                    <div class="col-md-6">
+                        <a href="{{ route('password.change') }}"><button style="width:100%;" class="genric-btn blue radius">เปลี่ยนรหัสผ่าน</button></a>
+                    </div>
                     <div class="col-md-6">
                         <a href="{{ url('member/tel-change') }}"><button style="width:100%;" class="genric-btn blue radius">เปลี่ยนเบอร์โทรศัพท์</button></a>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col-md-6">
                         <a href="{{ url('member/profile-change') }}"><button style="width:100%;" class="genric-btn blue radius">แก้ไขข้อมูลส่วนตัว</button></a>
                     </div>
-                </div>
-                <div class="row">
-                    <div class="COL-md-6"></div>
                     <div class="col-md-6">
                         <button style="width:100%;" class="genric-btn blue radius">
                             <a href="{{ route('sales.logout') }}"

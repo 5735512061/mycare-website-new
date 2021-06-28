@@ -38,12 +38,18 @@
                                 <th style="color: #000; text-align:center;">รางวัล</th>
                                 <th style="color: #000; text-align:center;">จำนวนพอยท์</th>
                                 <th style="color: #000; text-align:center;">วันที่แลกรางวัล</th>
-                                <th colspan="2" style="color: #000; text-align:center;">สถานะ</th>
+                                <th style="color: #000; text-align:center;">สถานะ</th>
+                                <th style="color: #000; text-align:center;"></th>
+                                <th style="color: #000; text-align:center;"></th>
                             </tr>   
                         </thead>
                         @foreach($exchanges as $exchange => $value)
                         @php
-                            $serialnumber = DB::table('members')->where('id',$value->member_id)->value('serialnumber');
+                            if(DB::table('members')->where('id',$value->member_id)->value('serialnumber') != NULL) {
+                                $serialnumber = DB::table('members')->where('id',$value->member_id)->value('serialnumber');
+                            } else {
+                                $serialnumber = DB::table('sales_members')->where('id',$value->sales_id)->value('serialnumber');
+                            }
                             $reward = DB::table('rewards')->where('id',$value->reward_id)->value('reward_name');
                             $point = DB::table('rewards')->where('id',$value->reward_id)->value('point');
                         @endphp
@@ -54,7 +60,17 @@
                                 <td style="color: #000; text-align:center;">{{$reward}}</td>
                                 <td style="color: #000; text-align:center;">{{$point}}</td>
                                 <td style="color: #000; text-align:center;">{{$value->date}}</td>
-                                <td style="color: #000; text-align:center;">{{$value->status}}</td>
+                                @if($value->status == 'รอดำเนินการ')
+                                    <td style="color: red; text-align:center;">{{$value->status}}</td>
+                                @elseif($value->status = 'แลกรางวัลสำเร็จ')
+                                    <td style="color: green; text-align:center;">{{$value->status}}</td>
+                                @endif
+                                <td style="color: #000; text-align:center;">
+                                    <a href="{{url('/admin/reward/exchange/update')}}/{{$value->id}}" style="color: blue;"><i class="fa fa-pencil-square-o"></i> แลกสำเร็จ</a>
+                                </td>
+                                <td style="color: red; text-align:center;">
+                                    <a href="{{url('/admin/exchange-delete/')}}/{{$value->id}}" style="color: red;" onclick="return confirm('Are you sure to delete ?')"><i class="fa fa-trash"></i></a>
+                                </td>
                             </tr>
                         </tbody>
                         @endforeach

@@ -67,6 +67,12 @@ class RewardsController extends Controller
                 $history->save();
             $scores = Historyreward::where('member_id',auth('member')->user()->id)->get();
             $points = Statistic::where('member_id',auth('member')->user()->id)->get();
+
+            $details = [
+                'reward_id' => $reward_id,
+            ];
+            \Mail::to('ping.inthanin@gmail.com')->send(new \App\Mail\RewardMail($details));
+            
         } else { 
             $member = Auth::guard('sales_members')->user()->serialnumber;
             $member_id = Salesmember::where('id',auth('sales_members')->user()->id)->value('id'); 
@@ -82,6 +88,12 @@ class RewardsController extends Controller
                 $history->save();
             $scores = Historyreward::where('sales_id',auth('sales_members')->user()->id)->get();
             $points = Statistic::where('sales_id',auth('sales_members')->user()->id)->get();
+
+            $details = [
+                'reward_id' => $reward_id,
+            ];
+            \Mail::to('ping.inthanin@gmail.com')->send(new \App\Mail\RewardMail($details));
+
         }
         
         return view('frontend/member/reward/success')->with('membersames',$membersames)

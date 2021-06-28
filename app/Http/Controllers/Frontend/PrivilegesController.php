@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 use App\Reward;
+use Auth;
 
 class PrivilegesController extends Controller
 {
@@ -14,8 +15,15 @@ class PrivilegesController extends Controller
     }
 
     public function reward_points() {
-        $rewards = Reward::where('reward_type',"!=",NULL)->get();
-        return view('/frontend/privilege/reward-points')->with('rewards',$rewards);
+        if(Auth::guard('member')->user() != NULL) {
+            $rewards = Reward::where('reward_type',"!=",NULL)->where('user_type','สมาชิกทั่วไป')->get();
+            return view('/frontend/privilege/reward-points')->with('rewards',$rewards);
+            
+        }
+        elseif(Auth::guard('sales_members')->user() != NULL) {
+            $rewards = Reward::where('reward_type',"!=",NULL)->where('user_type','เซลล์')->get();
+            return view('/frontend/privilege/reward-points-sale')->with('rewards',$rewards);
+        }
     }
 
     public function reward_detail($id) {

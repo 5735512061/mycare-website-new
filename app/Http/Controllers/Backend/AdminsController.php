@@ -428,13 +428,30 @@ class AdminsController extends Controller
 
 
     public function exchange(Request $request) {
-        $NUM_PAGE = 10;
+        $NUM_PAGE = 20;
         $exchanges = Historyreward::paginate($NUM_PAGE);
         $page = $request->input('page');
         $page = ($page != null)?$page:1;
         return view('/backend/admin/reward/exchange')->with('NUM_PAGE',$NUM_PAGE)
                                                      ->with('page',$page)
                                                      ->with('exchanges',$exchanges);
+    }
+
+    public function reward_exchange_update(Request $request,$id) {
+        $NUM_PAGE = 20;
+        $reward = Historyreward::findOrFail($id);
+        $reward->update(['status' => 'แลกรางวัลสำเร็จ']);
+        $exchanges = Historyreward::paginate($NUM_PAGE);
+        $page = $request->input('page');
+        $page = ($page != null)?$page:1;
+        return view('/backend/admin/reward/exchange')->with('NUM_PAGE',$NUM_PAGE)
+                                                     ->with('page',$page)
+                                                     ->with('exchanges',$exchanges);
+    }
+
+    public function exchange_delete($id) {
+        $exchange = Historyreward::destroy($id);
+        return back();
     }
 
     public function service(Request $request, $id) {
