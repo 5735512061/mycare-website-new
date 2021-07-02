@@ -93,6 +93,7 @@ class RewardsController extends Controller
                 'reward_id' => $reward_id,
             ];
             \Mail::to('ping.inthanin@gmail.com')->send(new \App\Mail\RewardMail($details));
+            // rich.chayawut@gmail.com
 
         }
         

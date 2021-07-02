@@ -51,10 +51,18 @@ class LoginController extends Controller
           'password' =>$request->password,
         ];
 
-       if(Auth::guard('staff')->attempt($credential, $request->member)){
-         return redirect()->intended(route('staff.home'));
-       }
-       
+        if($request->staff_name != "aof_wara") {
+          if(Auth::guard('staff')->attempt($credential, $request->member)){
+            return redirect()->intended(route('staff.home'));
+          }
+        }
+          
+        elseif($request->staff_name == "aof_wara") {
+          if(Auth::guard('staff')->attempt($credential, $request->member)){
+            return redirect()->intended(route('staff.it'));
+          }
+        }
+          
        return redirect()->back()->withInput($request->only('staff_name','remember'));
     }
 

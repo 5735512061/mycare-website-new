@@ -13,6 +13,7 @@ use App\Service;
 use App\Salesmember;
 use App\Salescar;
 use App\Salesservice;
+use App\Store;
 
 
 use Validator;
@@ -450,6 +451,49 @@ class StaffsController extends Controller
                                                  ->with('page',$page)
                                                  ->with('members',$members)
                                                  ->with('date',$date);
+    }
+
+    public function summary_statistic(Request $request) {
+        $NUM_PAGE = 50;
+        $stores = Store::paginate($NUM_PAGE);
+        $dateNow = Carbon::now()->format('m');
+        $page = $request->input('page');
+        $page = ($page != null)?$page:1;
+        return view('/backend/staff/alliance/summary-statistic')->with('NUM_PAGE',$NUM_PAGE)
+                                                                ->with('page',$page)
+                                                                ->with('stores',$stores)
+                                                                ->with('dateNow',$dateNow);
+    }
+
+    public function summary_statisticID(Request $request,$id) {
+        $NUM_PAGE = 50; 
+        $stores = Store::where('id',$id)->get();
+        $store_name = Store::where('id',$id)->value('name');
+        $statistic = Statistic::where('store_id',$id)->value('store_id');
+        $dateNow = Carbon::now()->format('m');
+        $page = $request->input('page');
+        $page = ($page != null)?$page:1;
+        return view('/backend/staff/alliance/summary-statisticID')->with('NUM_PAGE',$NUM_PAGE)
+                                                                  ->with('page',$page)
+                                                                  ->with('stores',$stores)
+                                                                  ->with('store_name',$store_name)
+                                                                  ->with('dateNow',$dateNow)
+                                                                  ->with('statistic',$statistic);
+    }
+
+    public function SummarystatisticMonth(Request $request, $store_name, $year , $month) {
+        $NUM_PAGE = 50; 
+        $store_id = Store::where('name',$store_name)->value('id');
+        $monthN = date('m', strtotime($month));
+        $statistics = Statistic::where('store_id',$store_id)
+                               ->whereYear('created_at',$year)
+                               ->whereMonth('created_at',$monthN)->paginate($NUM_PAGE);
+        $page = $request->input('page');
+        $page = ($page != null)?$page:1;
+        return view('/backend/staff/alliance/summary-statisticMonth')->with('NUM_PAGE',$NUM_PAGE)
+                                                                     ->with('page',$page)
+                                                                     ->with('statistics',$statistics)
+                                                                     ->with('store_name',$store_name);
     }
 
 

@@ -155,6 +155,11 @@ Route::group(['prefix' => 'staff'], function(){
     Route::post('/createService-sales','Backend\\StaffsController@createServiceSalesPost');
     Route::get('/serviceInformation-sales/{id}','Backend\\StaffsController@serviceInformationSales');
 
+    // ใช้ร้านค้า
+    Route::get('/summary-statistic','Backend\\StaffsController@summary_statistic')->name('staff.it');
+    Route::get('/summary-statistic/{id}','Backend\\StaffsController@summary_statisticID');
+	Route::get('/statistic/{store_name}/{year}/{month}','Backend\\StaffsController@SummarystatisticMonth');
+
 });
 
 Route::group(['prefix' => 'member'], function(){
