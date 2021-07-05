@@ -57,72 +57,6 @@ class ExpireStoresController extends Controller
             $status = Condition::where('member_id',$id)->value('status');
     
                 foreach($ids as $id => $value) {
-                    $serviceDate = Service::where('member_id',$value->id)
-                                          ->whereDate('created_at', '<', '2020-09-01 00:00:00')
-                                          ->orderBy('id','desc')
-                                          ->first();
-                    array_push($groupDates, $serviceDate);          
-                }
-    
-                foreach($ids as $id => $value) {
-                    
-                    $scanStatistic = Statistic::where('member_id',$value->id)
-                                            ->where('store_id','45')
-                                            ->whereDate('created_at', '>=', '2020-09-01 00:00:00')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('member_id',$value->id)
-                                            ->where('store_id','62')
-                                            ->whereDate('created_at', '>=', '2020-09-01 00:00:00')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('member_id',$value->id)
-                                            ->where('store_id','63')
-                                            ->whereDate('created_at', '>=', '2020-09-01 00:00:00')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('member_id',$value->id)
-                                            ->where('store_id','64')
-                                            ->whereDate('created_at', '>=', '2020-09-01 00:00:00')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('member_id',$value->id)
-                                            ->where('store_id','65')
-                                            ->whereDate('created_at', '>=', '2020-09-01 00:00:00')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('member_id',$value->id)
-                                            ->where('store_id','66')
-                                            ->whereDate('created_at', '>=', '2020-09-01 00:00:00')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('member_id',$value->id)
-                                            ->where('store_id','67')
-                                            ->whereDate('created_at', '>=', '2020-09-01 00:00:00')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-    
-                foreach($ids as $id => $value) {
                     $scanStatistic = Statistic::where('member_id',$value->id)
                                             ->where('store_id','61')
                                             ->whereDate('created_at', '>=', '2020-09-01 00:00:00')
@@ -224,14 +158,6 @@ class ExpireStoresController extends Controller
                 }
                 //จบ หมดอายุของเอกการยาง
     
-                //บัตรหมดอายุ ไม่สามารถรับสิทธิ์ได้
-                if(date_format(date_create_from_format('d/m/Y',$date),'Y-m-d') > date_format(date_create_from_format('d/m/Y',$expire),'Y-m-d')) {        
-                    $obj = new \stdClass();
-                    $obj->status = "offline";
-                    return response()->json($obj);
-                }
-                //จบ
-    
                 $code = str_random(8);
     
                         $receive_privilege = new Statistic;
@@ -243,49 +169,7 @@ class ExpireStoresController extends Controller
     
                         $statisticCode = Statistic::where('member_id',$member->id)
                                                 ->where('store_id',$store->id)->first();
-                                                // ตั้ง status
-                        if($status == "limit_1_perDay") {
-                            $dateST = Statistic::where('member_id',$member->id)->value('date');
-                            $dateST = strtr($date,'/','-');
-                            $date_d = date('d',strtotime($dateST));
-                            $date_m = date('m',strtotime($dateST));
-                            $date_y = date('Y',strtotime($dateST));
-                            $date_mY = $date_m.'/'.$date_y;
-                            $date_dmy = $date_d.'/'.$date_m.'/'.$date_y;
-                            $statisticFirst = Statistic::where('member_id',$member->id)
-                                                        ->where('date', 'like', '%'.$date_dmy)
-                                                        ->count();
-                            if($statisticFirst == 1) {
-                                $objData = new \stdClass();
-                                $objData->store = $store;
-                                $objData->member = $member;
-                                $objData->store_name = $store_name;
-                                $objData->statistic = $statisticCode;
-                                $objData->status = "PassFirst";
-                                
-                                return response()->json($objData);
-                            }
-                            // elseif($statisticFirst == 2) {
-                            //     $objData = new \stdClass();
-                            //     $objData->store = $store;
-                            //     $objData->member = $member;
-                            //     $objData->store_name = $store_name;
-                            //     $objData->statistic = $statisticCode;
-                            //     $objData->status = "PassSecond";
-                                
-                            //     return response()->json($objData);
-                            // }
-                            else {
-                                $objData = new \stdClass();
-                                $objData->store = $store;
-                                $objData->member = $member;
-                                $objData->store_name = $store_name;
-                                $objData->statistic = $statisticCode;
-                                $objData->status = "Pass";
-                                return response()->json($objData);
-                            }
-                        }
-                        else {
+
                             $objData = new \stdClass();
                             $objData->store = $store;
                             $objData->member = $member;
@@ -294,7 +178,6 @@ class ExpireStoresController extends Controller
                             $objData->status = "Pass";
                         
                             return response()->json($objData);
-                        }//จบการตั้ง status
     
                             // $obj = new \stdClass();
                             // $obj->store = $store;
@@ -315,65 +198,6 @@ class ExpireStoresController extends Controller
             $groupDates = array(); //เหมือนกัน
     
             $status = Salescondition::where('member_id',$id)->value('status');
-    
-                foreach($ids as $id => $value) { 
-                    $car_id = Salescar::where('member_id',$value->id)->value('id'); 
-                    $serviceDate = Salesservice::where('car_id',$car_id)
-                                               ->orderBy('id','desc')
-                                               ->first();
-                    array_push($groupDates, $serviceDate);          
-                }
-    
-                foreach($ids as $id => $value) {
-                    
-                    $scanStatistic = Statistic::where('sales_id',$value->id)
-                                              ->where('store_id','45')
-                                              ->orderBy('id','desc')
-                                              ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('sales_id',$value->id)
-                                              ->where('store_id','62')
-                                              ->orderBy('id','desc')
-                                              ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('sales_id',$value->id)
-                                            ->where('store_id','63')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('sales_id',$value->id)
-                                            ->where('store_id','64')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('sales_id',$value->id)
-                                            ->where('store_id','65')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('sales_id',$value->id)
-                                            ->where('store_id','66')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
-                foreach($ids as $id => $value) {
-                    $scanStatistic = Statistic::where('sales_id',$value->id)
-                                            ->where('store_id','67')
-                                            ->orderBy('id','desc')
-                                            ->first();
-                    array_push($groupDates, $scanStatistic);
-                }
     
                 foreach($ids as $id => $value) {
                     $scanStatistic = Statistic::where('sales_id',$value->id)
@@ -454,25 +278,10 @@ class ExpireStoresController extends Controller
                 }
                 //จบ หมดอายุของเอกการยาง
     
-                //บัตรหมดอายุ ไม่สามารถรับสิทธิ์ได้
-                if(date_format(date_create_from_format('d/m/Y',$date),'Y-m-d') > date_format(date_create_from_format('d/m/Y',$expire),'Y-m-d')) {        
-                    $obj = new \stdClass();
-                    $obj->status = "offline";
-                    return response()->json($obj);
-                }
-                //จบ
-                
-    
                 if(Member::where('serialnumber',$serialnumber)->count() == 0) { //สมาชิกทั่วไป
                     $statistic = Statistic::where('sales_id',$member->id)
                                           ->where('store_id',$store->id)
                                           ->where('date',$date)->count();
-                }
-    
-                if($statistic > 0) { //กรณีที่รับสิทธิ์แล้วในวันนั้น
-                    $obj = new \stdClass();
-                    $obj->status = "Fail";
-                    return response()->json($obj);
                 }
     
                 $code = str_random(8);
@@ -487,48 +296,7 @@ class ExpireStoresController extends Controller
                         $statisticCode = Statistic::where('sales_id',$member->id)
                                                 ->where('store_id',$store->id)->first();
                                                 // ตั้ง status
-                        if($status == "limit_1_perDay") {
-                            $dateST = Statistic::where('sales_id',$member->id)->value('date');
-                            $dateST = strtr($date,'/','-');
-                            $date_d = date('d',strtotime($dateST));
-                            $date_m = date('m',strtotime($dateST));
-                            $date_y = date('Y',strtotime($dateST));
-                            $date_mY = $date_m.'/'.$date_y;
-                            $date_dmy = $date_d.'/'.$date_m.'/'.$date_y;
-                            $statisticFirst = Statistic::where('sales_id',$member->id)
-                                                        ->where('date', 'like', '%'.$date_dmy)
-                                                        ->count();
-                            if($statisticFirst == 1) {
-                                $objData = new \stdClass();
-                                $objData->store = $store;
-                                $objData->member = $member;
-                                $objData->store_name = $store_name;
-                                $objData->statistic = $statisticCode;
-                                $objData->status = "PassFirst";
-                                
-                                return response()->json($objData);
-                            }
-                            // elseif($statisticFirst == 2) {
-                            //     $objData = new \stdClass();
-                            //     $objData->store = $store;
-                            //     $objData->member = $member;
-                            //     $objData->store_name = $store_name;
-                            //     $objData->statistic = $statisticCode;
-                            //     $objData->status = "PassSecond";
-                                
-                            //     return response()->json($objData);
-                            // }
-                            else {
-                                $objData = new \stdClass();
-                                $objData->store = $store;
-                                $objData->member = $member;
-                                $objData->store_name = $store_name;
-                                $objData->statistic = $statisticCode;
-                                $objData->status = "Pass";
-                                return response()->json($objData);
-                            }
-                        }
-                        else {
+                                                
                             $objData = new \stdClass();
                             $objData->store = $store;
                             $objData->member = $member;
@@ -537,7 +305,6 @@ class ExpireStoresController extends Controller
                             $objData->status = "Pass";
                         
                             return response()->json($objData);
-                        }//จบการตั้ง status
     
                             // $obj = new \stdClass();
                             // $obj->store = $store;

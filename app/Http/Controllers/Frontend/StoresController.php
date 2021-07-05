@@ -272,11 +272,13 @@ class StoresController extends Controller
                             $date_mY = $date_m.'/'.$date_y;
                             $date_dmy = $date_d.'/'.$date_m.'/'.$date_y;
                             $statisticx = Statistic::where('member_id',$member->id)
-                                                ->where('date', 'like', '%'.$date_dmy)
-                                                ->count();
+                                                   ->where('date', 'like', '%'.$date_dmy)
+                                                   ->where('store_id','!=','61')
+                                                   ->count();
                                 if($statisticx == 1) {
                                     $statisticxx = Statistic::where('member_id',$member->id)
                                                             ->where('store_id',$store->id)
+                                                            ->where('store_id','!=','61')
                                                             ->where('date',$date)->count();
                                         if($statisticxx > 0) {
                                             $obj = new \stdClass();
@@ -566,10 +568,12 @@ class StoresController extends Controller
                             $date_dmy = $date_d.'/'.$date_m.'/'.$date_y;
                             $statisticx = Statistic::where('sales_id',$member->id)
                                                 ->where('date', 'like', '%'.$date_dmy)
+                                                ->where('store_id','!=','61')
                                                 ->count();
                                 if($statisticx == 1) {
                                     $statisticxx = Statistic::where('sales_id',$member->id)
                                                             ->where('store_id',$store->id)
+                                                            ->where('store_id','!=','61')
                                                             ->where('date',$date)->count();
                                         if($statisticxx > 0) {
                                             $obj = new \stdClass();

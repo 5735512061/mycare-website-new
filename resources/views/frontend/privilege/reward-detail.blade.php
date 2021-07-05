@@ -145,9 +145,9 @@
 			<center><img src="{{url('/images/reward')}}/{{$reward->image}}" class="img-responsive" width="80%"></center>
 			<h1 style="font-size:20px; margin-top:0px !important;">เงื่อนไขการรับสิทธิ์</h1>
                     <div style="font-family: 'Prompt';">
-                        <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="7%">กดแลกคะแนนสะสมเพื่อรับสิทธิ์<br>
-                        <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="7%">ทางบริษัทฯ จะติดต่อกลับเพื่อให้ท่านยืนยันการรับสิทธิ์<br>
-                        <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="7%">กรณีทำการแลกพอยท์แล้ว จะไม่สามารถยกเลิกได้ทุกกรณี<br><br>
+                        <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="4%"> กดแลกคะแนนสะสมเพื่อรับสิทธิ์<br>
+                        <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="4%"> ทางบริษัทฯ จะติดต่อกลับเพื่อให้ท่านยืนยันการรับสิทธิ์<br>
+                        <img src="{{ asset('/img/mycare/symbol/arrow.png')}}" width="4%"> กรณีทำการแลกพอยท์แล้ว จะไม่สามารถยกเลิกได้ทุกกรณี<br><br>
                     </div>
 			<center><a href="{{url('member/reward-redem/')}}/{{$reward->id}}" class="genric-btn blue radius btn_sub" style="text-align: right;">กดแลกคะแนนสะสม</a></center>
 		  </div>
