@@ -33,9 +33,13 @@ class StoresController extends Controller
         }
 
         $store = Store::where('store_name',$store_name)->first();
+
     	$store_name = $store_name;
         $month_now = Carbon::now()->format('m');
         $year_now = Carbon::now()->format('Y'); 
+
+        if($store != null) {
+            
         $now_statistic = Statistic::where('store_id',$store->id)
                                   ->whereMonth('created_at',$month_now)
                                   ->whereYear('created_at',$year_now)->count();
@@ -45,12 +49,19 @@ class StoresController extends Controller
                                   ->whereMonth('created_at',$previous_month)
                                   ->whereYear('created_at',$previous_year)->count();
         $total_statistic = Statistic::where('store_id',$store->id)->count();
-    	return view('/frontend/member/privilege/store')->with('store',$store)
+
+        return view('/frontend/member/privilege/store')->with('store',$store)
     										           ->with('store_name',$store_name)
                                                        ->with('total_statistic',$total_statistic)
                                                        ->with('now_statistic',$now_statistic)
                                                        ->with('previousmonth_statistic',$previousmonth_statistic)
                                                        ->with('serialnumber',$serialnumber);
+            
+        } else {
+            return view('/frontend/member/privilege/store')->with('store',$store)
+    										                ->with('store_name',$store_name)
+                                                            ->with('serialnumber',$serialnumber);
+        }
     }
 
     public function alliance_privilege(Request $request, $store_name) {

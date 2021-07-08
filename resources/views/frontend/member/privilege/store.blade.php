@@ -64,6 +64,9 @@
 		</div>
     </div>
 </section>
+@if($store == NULL)
+<h1>QR Code ไม่ถูกต้อง กรุณาติดต่อสอบถามเพิ่มเติม ได้ที่เอกการยาง ทุกสาขา</h1>
+@else 
 <div class="container" id="desktop">
     <div class="card">
       <div class="thumbnail" style="height:735px !important;">
@@ -239,6 +242,7 @@ $('.sendurl').submit(function(e){
         console.log("test");
     });
 </script>
+@endif
 {{-- <script type="text/javascript">
     $('#myModal').modal({backdrop: 'static', keyboard: false})
 </script> --}}
