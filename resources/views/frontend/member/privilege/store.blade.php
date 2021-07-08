@@ -65,7 +65,7 @@
     </div>
 </section>
 @if($store == NULL)
-<h1>QR Code ไม่ถูกต้อง กรุณาติดต่อสอบถามเพิ่มเติม ได้ที่เอกการยาง ทุกสาขา</h1>
+<h1>QR Code ไม่ถูกต้อง กรุณาสแกน QR Code ที่ถูกต้อง</h1>
 @else 
 <div class="container" id="desktop">
     <div class="card">
